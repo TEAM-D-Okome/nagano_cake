@@ -1,26 +1,25 @@
 class Admin::CustomersController < ApplicationController
-  # ログイン済管理者のみにアクセスを許可する
-  before_action :authenticate_admin!
+  before_action :authenticate_admin! # ログイン済管理者のみにアクセスを許可する
 
-  def index #顧客一覧画面
+  def index #顧客一覧
     @customers = Customer.page(params[:page]) #CustomerでCustomerモデルのデータを保持
   end                                         #[.page]メソッドでデータをペジネーションするために使用
                                               #(params[:page])で現在のページ番号を示すために使用されるパラメーター
-  def show
+  def show #顧客詳細
     @customer = Customer.find(params[:id])
   end
 
-  def edit
+  def edit #顧客情報編集
     @customer = Customer.find(params[:id])
   end
 
-  def update
+  def update #顧客情報更新
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "会員情報の編集が完了しました。"
-      redirect_to admin_cutomer_path(@customer.id) #show(会員詳細)ページへのパス
+      redirect_to admin_cutomer_path(@customer.id) #編集成功時はshow(会員詳細)へ遷移
     else
-      render :edit
+      render :edit #編集に失敗した場合は編集画面へ遷移
     end
   end
 
