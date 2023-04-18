@@ -1,17 +1,17 @@
 class Public::DeliveryAddressesController < ApplicationController
   def index
-    @customer = current_user
+    @customer = current_customer
     @delivery_addresses = @customer.delivery_addresses
     @new_delivery_address = DeliveryAddress.new
   end
 
   def create
     @delivery_addresses = DeliveryAddress.new(delivery_addresses_params)
-    @delivery_addresses.customer_id = current_user.id
+    @delivery_addresses.customer_id = current_customer.id
     if @delivery_addresses.save
       redirect_to delivery_addresses_path
     else
-      @customer = current_user
+      @customer = current_customer
       @delivery_addresses = @customer.delivery_addresses
       render :index
     end
@@ -32,6 +32,7 @@ class Public::DeliveryAddressesController < ApplicationController
 
   def destroy
     delivery_addresses = DeliveryAddress.find(params[:id])
+    delivery_addresses.customer_id = current_customer.id
     delivery_addresses.destroy
     redirect_to delivery_addresses_path
   end
