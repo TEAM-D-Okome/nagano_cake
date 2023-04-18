@@ -1,95 +1,95 @@
-<nav class="navbar navbar-expand-lg bg-danger">
-  <!--ここにロゴを入れることになると思います-->
-  <div class="container">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse">
-    <div class="user-name text-light center-block">
-      <% if customer_signed_in? %>
-        <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_customer.last_name %><%= current_customer.first_name %></strong></span> 様</p>
-      <% elsif admin_signed_in? %>
-        <p class="h5 pt-3 pb-2"><strong>管理者ログイン中</strong></p>
-      <% else %>
-        <p class="pt-3">ようこそ、<span class="h5"><strong>ゲスト</strong></span> 様</p>
-      <% end %>
-    </div>
-    <div class="d-flex flex-column ml-auto">
-    <ul class="navbar-nav">
-      <% if admin_signed_in? %>
-        <li class="nav-link px-2">
-          <%= link_to admin_items_path, class: "text-decoration-none text-light h5" do %>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container -fluid border-bottom border-5 mt-auto">
+    <p>ここにロゴ</p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="user-name text-dark center-block">
+        <% if customer_signed_in? %>
+          <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_customer.last_name %><%= current_customer.first_name %></strong></span> 様</p>
+        <% elsif admin_signed_in? %>
+          <p class="h5 pt-3 pb-2"><strong>管理者ログイン中</strong></p>
+        <% else %>
+          <p class="pt-3">ようこそ、<span class="h5"><strong>ゲスト</strong></span> 様</p>
+        <% end %>
+      </div>
+      <div class="d-flex flex-column ml-auto">
+        <ul class="navbar-nav">
+          <% if admin_signed_in? %>
+            <li class="nav-link px-2">
+              <%= link_to admin_items_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-cookie-bite"></i> 商品一覧
           <% end %>
-        </li>
-        <li class="nav-link px-2">
-          <%= link_to admin_customers_path, class: "text-decoration-none text-light h5" do %>
-            <i class="fas fa-users"></i> 会員一覧
-          <% end %>
-        </li>
-        <li class="nav-link px-2">
-          <%= link_to admin_orders_path, class: "text-decoration-none text-light h5" do %>
-            <i class="far fa-file-alt"></i> 注文履歴一覧
-          <% end %>
-        </li>
-        <li class="nav-link px-2">
-          <%= link_to admin_genres_path, class: "text-decoration-none text-light h5" do %>
-            <i class="fas fa-tags"></i> ジャンル一覧
-          <% end %>
-        </li>
-        <li class="nav-link px-2">
-          <%= link_to destroy_admin_session_path, method: :delete, class: "text-decoration-none text-light h5" do %>
-            <i class="fas fa-sign-out-alt"></i> ログアウト
-          <% end %>
-        </li>
+            </li>
+            <li class="nav-link px-2">
+              <%= link_to admin_customers_path, class: "text-decoration-none text-dark h5" do %>
+                <i class="fas fa-users"></i> 会員一覧
+              <% end %>
+            </li>
+            <li class="nav-link px-2">
+              <%= link_to admin_orders_path, class: "text-decoration-none text-dark h5" do %>
+                <i class="far fa-file-alt"></i> 注文履歴一覧
+              <% end %>
+            </li>
+            <li class="nav-link px-2">
+              <%= link_to admin_genres_path, class: "text-decoration-none text-dark h5" do %>
+                <i class="fas fa-tags"></i> ジャンル一覧
+              <% end %>
+            </li>
+            <li class="nav-link px-2">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "text-decoration-none text-dark h5" do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
 
       <% elsif customer_signed_in? %>
         <li class="nav-link px-2">
-          <%= link_to customer_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to customer_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-user"></i> マイページ
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to items_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to items_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-cookie-bite"></i> 商品一覧
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to cart_items_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to cart_items_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-shopping-cart"></i> カート
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to destroy_customer_session_path, method: :delete, class: "text-decoration-none text-light h5" do %>
+          <%= link_to destroy_customer_session_path, method: :delete, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-sign-out-alt"></i> ログアウト
           <% end %>
         </li>
 
       <% else %>
         <li class="nav-link px-2">
-          <%= link_to about_path, class: "text-decoration-none text-light text-light h5" do %>
+          <%= link_to about_path, class: "text-decoration-none text-light text-dark h5" do %>
             <i class="fas fa-link"></i> About
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to items_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to items_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-cookie-bite"></i> 商品一覧
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to new_customer_registration_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to new_customer_registration_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-user-plus"></i> 新規登録
           <% end %>
         </li>
         <li class="nav-link px-2">
-          <%= link_to customer_session_path, class: "text-decoration-none text-light h5" do %>
+          <%= link_to customer_session_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fas fa-sign-in-alt"></i> ログイン
           <% end %>
         </li>
       <% end %>
-    </ul>
-    </div>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
