@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   # 管理者用ルーティング
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
+    sessions: "admin/sessions"
   }
 
   # 顧客用ルーティング
   devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
   }
 
   scope module: :public do
