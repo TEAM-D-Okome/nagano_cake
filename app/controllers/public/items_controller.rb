@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
+    @items = Item.all.order(creatad_at: :desc).page(params[:page])
     @genres = Genre.where(is_sale: true)
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
