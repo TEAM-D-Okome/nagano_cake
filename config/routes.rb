@@ -15,16 +15,22 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
 
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
-    patch 'customers/withdrawal' => 'customers#withdrawal'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdrawal'
+      end
+    end
 
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
-    resources :orders, only: [:new, :index, :show, :create]
-    post 'orders/confirm' => 'orders#confirm'
-    get 'orders/finish' => 'orders#finish'
+    resources :orders, only: [:new, :index, :show, :create] do
+      member do
+        post 'confirm'
+        get 'finish'
+      end
+    end
 
     resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
   end
