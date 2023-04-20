@@ -1,7 +1,7 @@
 class CreateOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :orders do |t|
-      
+
       t.integer :customer_id, null: false
       t.integer :postage, default: 800, null: false
       t.integer :pay_method, default: 0, null: false
