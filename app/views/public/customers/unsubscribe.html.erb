@@ -19,7 +19,7 @@
       <%= link_to "退会しない", :back, class: "btn btn-primary" %>
     </div>
     <div class="col-3">
-      <%= link_to "退会する", withdrawal_customers_path, method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
+      <%= link_to "退会する", withdrawal_customers_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
     </div>
   </div>
 </div>
