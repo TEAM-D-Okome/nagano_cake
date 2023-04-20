@@ -1,0 +1,8 @@
+<% if customer.errors.any? %>
+  <h4><strong><%= customer.errors.count %>件のエラーが発生しました</strong></h4>
+    <ul>
+      <% customer.errors.full_messages.each do |message| %>
+        <h5><li><%= message %></li></h5>
+      <% end %>
+    </ul>
+<% end %>
