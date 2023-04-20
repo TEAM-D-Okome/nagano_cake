@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
   email: 'team_d@okome.com',
-  password: '123456789'
+  password: '111-111'
 )
 
-3.times do |n|
+15.times do |n|
     Customer.create!(
       email: "test#{n + 1}@gmail.com",
       password: "11111111",
@@ -23,3 +23,11 @@ Admin.create!(
       phone_number: "00000000000"
     )
   end
+
+
+gente_lists = ["ケーキ", "焼き菓子", "ドーナツ", "チョコレート", "キャンディ", "マカロン"]
+for i in gente_lists do
+  Genre.create!(
+    name: i
+  )
+end
