@@ -7,7 +7,7 @@
   <div class="row mt-5">
     <div class="col-md-5">
       <div class="mx-5">
-        <%= image_tag @item.image,size: "350x250" %>
+        <%= image_tag @item.get_image(350, 250) %>
       </div>
     </div>
     <div class="col-md-7" style="text-left">
