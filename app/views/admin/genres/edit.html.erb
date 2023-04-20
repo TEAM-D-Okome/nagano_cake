@@ -1,27 +1,27 @@
-<h1>Admin::Genres#edit</h1>
-<p>わかりやすいように一応残します</p>
-
 <div class="container my-5">
-  <div>余裕があればここにエラーメッセージが出るようにしたい</div>
+  <%= render 'error',obj: @genre %>
+  <%= flash[:notice] %>
   <div class="row mt-4 md-2">
-    <h3 class="bg-secondary text-light"><strong>ジャンル編集</strong></h3>
+    <h3 class="table col-4 label-background-color"><strong>ジャンル編集</strong></h3>
   </div>
 
-  <%= form_with model: @genre,url:admin_genre_path,method: :patch do |f| %>
-  <table class="mt-4">
-    <tbody>
-      <tr>
-        <td>
-          <label for="genre_name">ジャンル名</label>
-        </td>
-        <td>
-          <%= f.text_field:name %>
-        </td>
-        <td>
-          <%= f.submit "変更を保存",class:"btn btn-success" %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <% end %>
+  <div class="row mt-4 md-2">
+    <%= form_with model: @genre,url:admin_genre_path,method: :patch do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="genre_name">ジャンル名</label>
+            </td>
+            <td>
+              <%= f.text_field:name %>
+            </td>
+            <td>
+              <%= f.submit "変更を保存",class:"btn btn-success" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 </div>

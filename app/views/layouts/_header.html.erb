@@ -20,22 +20,22 @@
           <% if admin_signed_in? %>
             <li class="nav-link px-2">
               <%= link_to admin_items_path, class: "text-decoration-none text-dark h5" do %>
-            <i class="fas fa-cookie-bite"></i> 商品一覧
+            <i class="fas fa-birthday-cake"></i> 商品一覧
           <% end %>
             </li>
             <li class="nav-link px-2">
               <%= link_to admin_customers_path, class: "text-decoration-none text-dark h5" do %>
-                <i class="fas fa-users"></i> 会員一覧
+                <i class="fas fa-user-check"></i> 会員一覧
               <% end %>
             </li>
             <li class="nav-link px-2">
               <%= link_to admin_orders_path, class: "text-decoration-none text-dark h5" do %>
-                <i class="far fa-file-alt"></i> 注文履歴一覧
+                <i class="fas fa-check-square"></i> 注文履歴一覧
               <% end %>
             </li>
             <li class="nav-link px-2">
               <%= link_to admin_genres_path, class: "text-decoration-none text-dark h5" do %>
-                <i class="fas fa-tags"></i> ジャンル一覧
+                <i class="fas fa-gift"></i> ジャンル一覧
               <% end %>
             </li>
             <li class="nav-link px-2">
@@ -52,12 +52,12 @@
         </li>
         <li class="nav-link px-2">
           <%= link_to items_path, class: "text-decoration-none text-dark h5" do %>
-            <i class="fas fa-cookie-bite"></i> 商品一覧
+            <i class="fas fa-birthday-cake"></i> 商品一覧
           <% end %>
         </li>
         <li class="nav-link px-2">
           <%= link_to cart_items_path, class: "text-decoration-none text-dark h5" do %>
-            <i class="fas fa-shopping-cart"></i> カート
+            <i class="fas fa-cart-arrow-down"></i> カート
           <% end %>
         </li>
         <li class="nav-link px-2">
@@ -69,12 +69,12 @@
       <% else %>
         <li class="nav-link px-2">
           <%= link_to about_path, class: "text-decoration-none text-light text-dark h5" do %>
-            <i class="fas fa-link"></i> About
+            <i class="fas fa-heart"></i> About
           <% end %>
         </li>
         <li class="nav-link px-2">
           <%= link_to items_path, class: "text-decoration-none text-dark h5" do %>
-            <i class="fas fa-cookie-bite"></i> 商品一覧
+            <i class="fas fa-birthday-cake"></i> 商品一覧
           <% end %>
         </li>
         <li class="nav-link px-2">
