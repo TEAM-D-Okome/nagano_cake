@@ -21,7 +21,7 @@
         <% @items.first(4).each do |item| %>
         <div class="mr-2">
           <%= link_to item_path(item) do %>
-            <div><%= image_tag item.get_image(150,150) %></div></br>
+            <div><%= image_tag item.get_image(150,100) %></div></br>
             <p><%= item.name %></p>
             <% if item.is_sale == true %>
               <p><%= item.add_tax_tax_out_price %>円(税抜き)</p>
@@ -32,7 +32,7 @@
         </div>
         <% end %>
       </div>
-      <div class="mt-2 text-right"><%= link_to "全ての商品を見る", items_path %></div>
+      <div class="mt-2 mb-3 text-right"><%= link_to "全ての商品を見る", items_path %></div>
     </div>
   </div>
 </div>
