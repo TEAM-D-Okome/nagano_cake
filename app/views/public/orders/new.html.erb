@@ -2,7 +2,7 @@
   <div class="row">
   <div class="col">
     <h3 class="mb-4"><strong>注文情報入力</strong></h3>
-    <%= form_with model: @order do |f| %>
+    <%= form_with model: @order, url: orders_path, local: true do |f| %>
     <div class="form-group">
 
       <div class="h5"><strong>支払い方法</strong></div>
@@ -24,8 +24,8 @@
         <div class="my-3 form-check">
           <% if current_customer.delivery_addresses.present? %>
             <%= f.radio_button :select_address, 1 %>
-            <%= f.label :select_address, "登録済み住所から選択" %><br>
-            <%= f.select :delivery_address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :address_display) %>
+            <%= f.label :address, "登録済み住所から選択" %><br>
+            <%= f.select :address_id , options_from_collection_for_select(@addresses, :id, :address_display) %></p>
           <% end %>
         </div><p></p>
 

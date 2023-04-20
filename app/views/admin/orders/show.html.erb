@@ -1,1 +1,68 @@
-<h1>全てのページをマージ後に作成します</h1>
+<!--注文履歴詳細-->
+
+<%= form_with model: @order, url: admin_orders_path, method: :patch, local: true do |f| %>
+  <table>
+    <tr>
+      <td>購入者</td>
+      <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= l @order.created_at %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.post_code%><%= @order.address %><%= @order.name %></td>
+    </tr>
+    <tr>
+      <td>支払い方法</td>
+      <td><%= @order.pay_method_i18n%></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <td>
+        <%= f.select :status, Order.statuses_i18n.invert %>
+        <%= f.submit "更新", class: "btn btn-success" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<table>
+  <tr>
+    <td>商品名</td>
+    <td>単価(税込)</td>
+    <td>数量</td>
+    <td>小計</td>
+    <td>製作ステータス</td>
+  </tr>
+<% @order_items.each do |order_item| %>
+
+<% @sum = 0 %>
+<% @sum += order_item.item.add_tax_tax_out_price %>
+
+<%= form_with model: order_item , url: admin_order_items_path(order_item.id) , method: :patch , local: true do |f| %>
+    <table>
+        <tr>
+          <td><%= order_item.item.name %></td>
+          <td><%= order_item.item.add_tax_tax_out_price %></td>
+          <td>
+            <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>商品合計</td>
+        <td><%= @sum %>円</td>
+      </tr>
+      <tr>
+        <td>送料</td>
+        <td>800円</td>
+      </tr>
+      <tr>
+        <td>請求金額合計</td>
+        <td><%= @sum + 800 %>円</td>
+      </tr>
+  </table>
+<% end %>
