@@ -2,8 +2,8 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @delivery_addresses = current_customer.delivery_addresses.all
     @order = Order.new
+    @delivery_addresses = current_customer.delivery_addresses.all
   end
 
   def confirm
@@ -18,21 +18,20 @@ class Public::OrdersController < ApplicationController
       @order.post_code = @delivery_addresses.post_code
       @order.address = @delivery_addresses.address
       @order.name = @delivery_addresses.name
-    elsif params[:order][:aselect_address] == "2"
-     @order.post_code = params[:order]["post_code"]
-     @order.address = params[:order]["address"]
-     @order.name = params[:order]["name"]
+    elsif params[:order][:select_address] == "2"
+      @order.post_code = params[:order]["post_code"]
+      @order.address = params[:order]["address"]
+      @order.name = params[:order]["name"]
     else
       render :new
     end
-    @cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items.all
   end
 
   def create
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    @order.billing_amount = @order.calculate_total_price + @order.postage
     @order.save
 
     @cart_items = current_customer.cart_items
