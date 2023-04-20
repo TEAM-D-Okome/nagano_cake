@@ -32,6 +32,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
+    @order.billing_amount = @order.calculate_total_price + @order.postage
     @order.save
 
     @cart_items = current_customer.cart_items
