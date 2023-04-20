@@ -22,13 +22,31 @@
   <% end %>
 
   <table class="table table-bordered mt-3">
+
     <thead>
       <tr class="table-secondary text-left">
-        <th class="col-3">郵便番号</th>
-        <th class="col-6">住所</th>
-        <th class="col-3">宛名</th>
-        <th class="col-6"></th>
+        <th class="col-1">郵便番号</th>
+        <th class="col-3">住所</th>
+        <th class="col-1">宛名</th>
+        <th class="col-1 "></th>
+        <th class="col-1 "></th>
       </tr>
     </thead>
+
+    <tbody>
+      <% @delivery_addresses.each do |address| %>
+        <tr>
+          <td><%= address.post_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td>
+            <%= link_to "編集する", edit_delivery_address_path(address), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= link_to "削除する", delivery_address_path(address), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
