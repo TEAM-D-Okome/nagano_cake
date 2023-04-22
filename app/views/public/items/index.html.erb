@@ -1,11 +1,14 @@
-<div class="container">
-  <div class="row mt-5">
-    <!--ジャンル検索フォーム用のcol-->
-    <div class="col-md-2 mr-3">
-
+<div class="container-fluid">
+  <div class="row offset-2 mt-5">
+    <div class="col-2 mr-3">
+      <%= render 'public/homes/genrebar', genres: @genres %>
     </div>
-    <div class="col-md-10">
-      <span class="h3 mt-2 mb-2"><strong>商品一覧</strong></span><span class="h5"> (全<%= @items.count %>件)</span>
+    <div class="col-8">
+      <% if params[:genre_id] %>
+        <span class="h3 mt-2 mb-2"><strong><%= @genre.name %>一覧</strong><span class="h5"> (全<%= @items.count %>件)</span>
+      <% else %>
+        <span class="h3 mt-2 mb-2"><strong>商品一覧</strong></span><span class="h5"> (全<%= @items.count %>件)</span>
+      <% end %>
       <div class="items-list d-flex flex-wrap">
         <% @items.each do |item| %>
         <div class="item col-md-6 col-lg-3 mt-3 mx-0">

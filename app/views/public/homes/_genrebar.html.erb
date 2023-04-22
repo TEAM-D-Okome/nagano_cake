@@ -1,0 +1,16 @@
+<table class="table table-bordered table-hover text-center">
+  <thead class="table-active">
+    <tr>
+      <th class="h4 font-weight-bold">ジャンル一覧</th>
+    </tr>
+  </thead>
+  <% genres.each do |genre| %>
+  <tr>
+    <td>
+      <%= link_to items_path(genre_id: genre.id), class: "text-dark" do %>
+        <%= genre.name %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
