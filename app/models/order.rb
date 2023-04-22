@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many :items, through: :order_items
+  # has_many :items, through: :order_items
   has_many :order_items, dependent: :destroy
 
   # enum(列拳型)で検索すれば使用方法が出てくる
