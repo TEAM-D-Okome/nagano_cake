@@ -3,25 +3,22 @@ class Public::OrdersController < ApplicationController
 
   def new #購入情報の入力画面にて、宛先や住所を入力するところ
     @order = Order.new
-    @delivery_addresses = current_customer.delivery_addresses.all
+    @addresses = current_customer.delivery_addresses.all
+    @billing_amount = params[:billing_amount]
   end
 
   def confirm
-     @billing_amount = 0
-     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
+     @order = Order.find(params[:id])
+    if params[:select_address] == "0"
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
       @order.name = current_customer.first_name + current_customer.last_name
-    elsif params[:order][:select_address] == "1"
+    elsif params[:select_address] == "1"
       @delivery_addresses = DeliveryAddress.find(params[:order]["delivery_addresses_id"])
       @order.post_code = @address.post_code
       @order.address = @delivery_addresses.address
       @order.name = @delivery_addresses.name
-    elsif params[:order][:select_address] == "2"
-      @order.post_code = params[:order]["post_code"]
-      @order.address = params[:order]["address"]
-      @order.name = params[:order]["name"]
+    elsif params[:select_address] == "2"
     else
       render :new
     end
@@ -30,24 +27,24 @@ class Public::OrdersController < ApplicationController
 
   def create
     @customer = current_customer
-    @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    @order.save
+    @order.customer_id = @customer.id
+    @order.save!
 
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_items = OrderItem.new
       @order_items.order_id = @order.id
       @order_items.item_id = cart_item.item.id
-      @order_item.quantity = cart_item.quantity
+      @order_items.quantity = cart_item.quantity
       @order_items.tax_in_price = cart_item.item.add_tax_tax_out_price
       @order_items.save
     end
-      redirect_to finish_order_path
+      redirect_to confirm_index_path(@order,select_address: params[:order][:select_address])
       current_customer.cart_items.destroy_all
   end
 
-  def complete
+  def finish
   end
 
   def index

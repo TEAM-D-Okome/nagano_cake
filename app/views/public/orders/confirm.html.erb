@@ -57,15 +57,15 @@
       <tr>
         <th class="align-middle bg-light">商品合計</th>
         <td class="align-middle">
-          <%= @billing_amount.to_s(:delimited) %>
+          <%= @order.billing_amount.to_s(:delimited) %>
         </td>
       </tr>
 
       <tr>
         <th class="align-middle bg-light">請求金額</th>
         <td class="align-middle">
-          <%= (@billing_amount + @order.postage).to_s(:delimited) %>
-          <%= f.hidden_field :billing_amount, :value => @billing_amount + @order.postage %>
+          <%= (@order.billing_amount + @order.postage).to_s(:delimited) %>
+          <%= f.hidden_field :billing_amount, :value => @order.billing_amount + @order.postage %>
         </td>
       </tr>
     </table>
