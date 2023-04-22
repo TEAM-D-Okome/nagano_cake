@@ -12,32 +12,32 @@
         <tr>
           <th style="width:20%">氏名</th>
           <td>
-            （姓）<%= f.text_field :last_name %>
-            （名）<%= f.text_field :first_name %>
+            （姓）<%= f.text_field :last_name,:size=>"43" %>
+            （名）<%= f.text_field :first_name,:size=>"43" %>
           </td>
         </tr>
         <tr>
           <th style="width:20%">フリガナ</th>
           <td>
-            （セイ）<%= f.text_field :last_name_kana %>
-            （メイ）<%= f.text_field :first_name_kana %>
+            （セイ）<%= f.text_field :last_name_kana,:size=>"41" %>
+            （メイ）<%= f.text_field :first_name_kana,:size=>"41" %>
           </td>
         </tr>
         <tr>
           <th style="width:20%">郵便番号</th>
-          <td><%= f.text_field :post_code %></td>
+          <td><%= f.text_field :post_code,:size=>"49" %></td>
         </tr>
         <tr>
           <th style="width:20%">住所</th>
-          <td><%= f.text_area :address, size: "45x2" %></td>
+          <td><%= f.text_area :address, size: "100x5" %></td>
         </tr>
         <tr>
           <th style="width:20%">電話番号</th>
-          <td><%= f.text_field :phone_number %></td>
+          <td><%= f.text_field :phone_number,:size=>"49" %></td>
         </tr>
         <tr>
           <th style="width:20%">メールアドレス</th>
-          <td><%= f.text_field :email %></td>
+          <td><%= f.text_field :email,:size=>"49" %></td>
         </tr>
         <tr>
           <th style="width:20%">会員ステータス</th>
@@ -52,7 +52,7 @@
         </tr>
       </tbody>
     </table>
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
+      <% end %>
     </div>
-    <%= f.submit '変更を保存', class: "btn btn-success" %>
-  <% end %>
 </div>

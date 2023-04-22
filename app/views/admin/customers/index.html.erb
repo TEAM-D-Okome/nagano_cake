@@ -1,34 +1,44 @@
-<div class="container mt-5 mb-5">
+<div class="container my-5" >
   <div class="row">
-    <h3 class="mb-4"><strong>会員一覧</strong></h3>
-      <table class="table w-100 table-hover text-center">
-        <thead>
-          <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <% @customers.each do |customer| %>
-          <tbody>
-            <td><%= customer.id %></td>
-            <td>
-              <div class="link-secondary">
-              <%= link_to admin_customer_path(customer.id) do %>
-                <%= customer.last_name %><%= customer.first_name %>
+    <div class="col-3 mb-3 offset-1">
+      <h3><strong>会員一覧</strong></h3>
+    </div>
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th>会員ID</th>
+                  <th>氏名</th>
+                  <th>メールアドレス</th>
+                  <th>ステータス</th>
+                </tr>
+              </thead>
+              <% @customers.each do |customer| %>
+              <tbody>
+                <td><%= customer.id %></td>
+                <td>
+                  <div class="link-secondary">
+                    <%= link_to admin_customer_path(customer.id) do %>
+                      <%= customer.last_name %><%= customer.first_name %>
+                    <% end %>
+                  </div>
+                </td>
+                <td><%= customer.email %></td>
+                  <% if customer.is_deleted == false %>
+                <td><strong><p class="text-success">有効</p></strong></td>
+                  <% elsif %>
+                <td><strong><p class="text-secondary">退会</p></strong></td>
+                  <% end %>
+              </tbody>
               <% end %>
-              </div>
-            </td>
-            <td><%= customer.email %></td>
-            <% if customer.is_deleted == false %>
-              <td><strong><p class="text-success">有効</p></strong></td>
-            <% elsif %>
-              <td><strong><p class="text-secondary">退会</p></strong></td>
-            <% end %>
-          </tbody>
-        <% end %>
-      </table>
-      <%= paginate @customers %>
+            </table>
+            <div class="pagination justify-content-center mt-3">
+              <%= paginate @customers %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
