@@ -1,20 +1,19 @@
 <nav class="navbar navbar-expand-lg">
-  <div class="container -fluid border-bottom border-5 mt-auto">
-    <%= link_to image_tag('logo.png', width: '50%', height: '50%', class: 'ml-5'), root_path %>
+  <%= link_to image_tag('logo.png', width: '50%', height: '50%', class: 'ml-5'), root_path %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse">
-      <div class="user-name text-dark center-block">
-        <% if customer_signed_in? %>
-          <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_customer.last_name %><%= current_customer.first_name %></strong></span> 様</p>
-        <% elsif admin_signed_in? %>
-          <p class="h5 pt-5 pb-5"><strong>管理者ログイン中</strong></p>
-        <% else %>
-          <p class="pt-3">ようこそ、<span class="h5"><strong>ゲスト</strong></span> 様</p>
-        <% end %>
-      </div>
+  <div class="collapse navbar-collapse">
+    <div class="user-name text-dark center-block">
+      <% if customer_signed_in? %>
+        <p class="pt-3">ようこそ、<span class="h5"><strong><%= current_customer.last_name %><%= current_customer.first_name %></strong></span> 様</p>
+      <% elsif admin_signed_in? %>
+        <p class="h5 pt-5 pb-5"><strong>管理者ログイン中</strong></p>
+      <% else %>
+        <p class="pt-3">ようこそ、<span class="h5"><strong>ゲスト</strong></span> 様</p>
+      <% end %>
+    </div>
       <div class="d-flex flex-column ml-auto">
         <ul class="navbar-nav">
           <% if admin_signed_in? %>
@@ -89,7 +88,9 @@
         </li>
       <% end %>
         </ul>
+        <div class="d-flex flex-row-reverse">
+          <%= render 'public/searches/search' %>
+        </div>
       </div>
-    </div>
   </div>
 </nav>

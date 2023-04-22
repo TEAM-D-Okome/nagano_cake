@@ -30,8 +30,10 @@ Rails.application.routes.draw do
 
         get 'finish' => 'orders#finish'
 
-
     resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
+
+    get 'search' => 'searches#search'
+
   end
 
 
