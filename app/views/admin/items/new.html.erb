@@ -1,12 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-7 mt-5 mx-auto">
-      <%= render 'admin/genres/error',obj: @item %>
-    </div>
-
+  <div class="row mt-4 md-2">
     <div class="col-md-6 mx-auto">
-      <h3 class="label-background-color col-md-3">商品新規登録</h3>
-      <%= form_with model: @item, url: admin_items_path do |f| %>
+      <%= render 'admin/genres/error',obj: @item %>
+      <h3 class="table col-3 label-background-color text-center">商品新規登録</h3>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
       <table class="table table-borderless mt-3">
         <tbody>
           <tr>
@@ -46,13 +43,11 @@
         </tbody>
       </table>
         <div class="row">
-          <div class="col-md-6 mx-auto">
-            <div class="mb-5 mx-auto">
-              <%= f.submit "新規登録", class:'btn btn-lg btn-success' %>
-            </div>
+          <div class="mb-5 mx-auto">
+            <%= f.submit "新規登録", class:'btn btn-lg btn-success' %>
           </div>
         </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
 </div>
