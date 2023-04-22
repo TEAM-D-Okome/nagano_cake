@@ -1,13 +1,11 @@
-<div class="container my-5">
-  <%= render 'error',obj: @genre %>
-  <%= flash[:notice] %>
+<div class="container">
   <div class="row mt-4 md-2">
-    <h3 class="table col-4 label-background-color"><strong>ジャンル編集</strong></h3>
-  </div>
-
-  <div class="row mt-4 md-2">
+    <div class="col-md-6 mx-auto">
+      <%= render 'error',obj: @genre %>
+      <%= flash[:notice] %>
+      <h3 class="table col-3 label-background-color text-center"><strong>ジャンル編集</strong></h3>
     <%= form_with model: @genre,url:admin_genre_path,method: :patch do |f| %>
-      <table>
+      <table class="table table-borderless mt-3">
         <tbody>
           <tr>
             <td>
@@ -23,5 +21,6 @@
         </tbody>
       </table>
     <% end %>
+    </div>
   </div>
 </div>
