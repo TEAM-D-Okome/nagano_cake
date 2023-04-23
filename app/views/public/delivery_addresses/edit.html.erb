@@ -1,6 +1,12 @@
 <div class="container my-5" >
   <%= flash[:notice] %>
   <div class="row">
+    <div class="col-5 mb-2 offset-1">
+      <%= render 'error', obj: @delivery_addresses %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-3 mb-5 offset-1">
       <h3 class="label-background-color"><strong>配送先編集</strong></h3>
     </div>
