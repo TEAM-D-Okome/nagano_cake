@@ -25,7 +25,7 @@
           <% if current_customer.delivery_addresses.present? %>
             <%= f.radio_button :select_address, 1 %>
             <%= f.label :address, "登録済み住所から選択" %><br>
-            <%= f.select :address, options_from_collection_for_select(@addresses, :address_display, :address_display) %></p>
+            <%= f.select :address, options_from_collection_for_select(@addresses, :address_display, :address_display) %>
           <% end %>
         </div><p></p>
 
