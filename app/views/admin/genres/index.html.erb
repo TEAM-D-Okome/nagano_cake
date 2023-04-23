@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row mt-4 md-2">
+  <div class="row mt-4 mb-5 md-2">
     <div class="col-md-6 mx-auto">
       <%= render 'error',obj: @genre %>
       <%= flash[:notice] %>
-      <h3 class="table col-5 label-background-color text-center "><strong>ジャンル一覧・追加</strong></h3>
+      <h3 class="text-center"><strong class="border-bottom border-dark">ジャンル一覧・追加</strong></h3>
     <%= form_with model: @genre,url:admin_genres_path,method: :post,class:"genre_form" do |f| %>
-      <table class="table table-border mt-5">
+      <table class="table table-border contents-area mt-5">
         <tbody>
           <tr>
             <td>ジャンル名</td>

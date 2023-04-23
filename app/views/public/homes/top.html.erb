@@ -25,7 +25,7 @@
             <div><%= image_tag item.get_image(200,150) %></div></br>
             <p><%= item.name %></p>
             <% if item.is_sale == true %>
-              <p><%= item.add_tax_tax_out_price %>円(税抜き)</p>
+              <p><%= item.add_tax_tax_out_price %>円(税込)</p>
             <% else %>
               <p class="text-danger">販売停止中</p>
             <% end %>
