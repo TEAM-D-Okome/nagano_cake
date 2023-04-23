@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def new #注文情報入力
     @order = Order.new
-    @addresses = current_customer.addresses.all #住所を(0)[自分の住所](1)[登録済住所](2)[新しいお届け先]から選択する
+    @addresses = current_customer.delivery_addresses.all #住所を(0)[自分の住所](1)[登録済住所](2)[新しいお届け先]から選択する
   end                                                     #注文情報入力画面 new.html.erbで条件を分けてformを送り、def confirmで設定をし直す
 
   def confirm #注文情報確認

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h3 class="mb-4"><strong>注文情報入力</strong></h3>
-      <%= form_with model: @order, url: confirm_orders_path true do |f| %>
+      <%= form_with model: @order, url: confirm_orders_path do |f| %>
       <div class="form-group">
 
         <div class="h5"><strong>支払い方法</strong></div>
@@ -30,7 +30,7 @@
               <!--コントローラの@addresses = current_customer.current_customer.addresses.all-->
               <!--モデルの情報をもとにセレクトボックスを作成するため、options_from_collection_for_select というヘルパーメソッドを使用-->
               <!--書き方は「<= f.select :プロパティ名, options_from_collection_for_select(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) %>」-->
-              <%= f.select :customer_id, options_from_collection_for_select(@addresses.all, :id, :address_display) %>
+              <%= f.select :customer_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
             <% end %>
           </div><p></p>
 
