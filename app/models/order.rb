@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
-  # has_many :items, through: :order_items
-  has_many :order_items, dependent: :destroy
+  has_many :items, through: :order_items #注文には商品が多くある
+  has_many :order_items, dependent: :destroy #中間テーブル
 
   # enum(列拳型)で検索すれば使用方法が出てくる
   enum pay_method: { credit_card:0, transfer:1 }

@@ -1,31 +1,36 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
-  def new #購入情報の入力画面にて、宛先や住所を入力するところ
+  def new #注文情報入力
     @order = Order.new
-    @addresses = current_customer.delivery_addresses.all
-    @billing_amount = params[:billing_amount]
+    @addresses = current_customer.delivery_addresses.all #住所を(0)[自分の住所](1)[登録済住所](2)[新しいお届け先]から選択する
+    # @billing_amount = params[:billing_amount]          #注文情報入力画面 new.html.erbで条件を分けてformを送り、def confirmで設定をし直す
   end
 
-  def confirm
-     @total_item_price = 0
+  def confirm #注文情報確認
+     @total_item_price = 0 #合計金額total初期化
      @order = Order.new(order_params)
-    if params[:select_address] == "0"
-      @order.address = current_customer.address
-      @order.post_code = current_customer.post_code
-      @order.name = current_customer.first_name + current_customer.last_name
-    elsif params[:select_address] == "1"
-      @delivery_addresses = DeliveryAddress.find(params[:order]["delivery_addresses_id"])
+    if params[:order][:select_address] == "0" #newにある[:select_address] == "0"のデータ(ご自身の住所)を呼び出す
+      @order.address = current_customer.address #ordersのカラム
+      @order.post_code = current_customer.post_code #ordersのカラム
+      @order.name = "#{current_customer.last_name + current_customer.first_name}" #ordersのカラム
+    elsif params[:order][:select_address] == "1" #newにある[:select_address] == "1"のデータ(登録済み住所)を呼び出す
+      @addresses = DeliveryAddress.find(params[:order]["delivery_addresses_id"]) #DeliveryAddressにあるdelivery_addresses
+      #ordersのcustomer_id(=カラム)で登録先の住所を選び、そのデータ送る
       @order.post_code = @address.post_code
-      @order.address = @delivery_addresses.address
-      @order.name = @delivery_addresses.name
+      @order.address = @addresses.address
+      @order.name = @addresses.name
+    elsif params[:select_address] == "2"
+      @order.post_code = params[:order]["post_code"]
+      @order.address = params[:order]["address"]
+      @order.name = params[:order]["name"]
     else
-      params[:select_address] == "2"
+      render :new
     end
-      @cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items.all #カート商品をconfirm注文確認画面で表示させる
   end
 
-  def create
+  def create #注文する
     @customer = current_customer
     @order = current_customer.orders.new(order_params)
     @order.customer_id = @customer.id
@@ -40,11 +45,11 @@ class Public::OrdersController < ApplicationController
       @order_items.tax_in_price = cart_item.item.add_tax_tax_out_price
       @order_items.save
     end
-      redirect_to confirm_index_path(@order,select_address: params[:order][:select_address])
+      redirect_to complete_orders(@order,select_address: params[:order][:select_address])
       current_customer.cart_items.destroy_all
   end
 
-  def finish
+  def complete #注文完了
   end
 
   def index
@@ -59,7 +64,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params                    #送料,支払方法,請求金額,郵便番号,住所,宛名,注文ステータス
-    params.require(:order).permit(:postage,:pay_method,:billing_amount,:post_code,:address,:name,:status)
+    params.require(:order).permit(:postage,:pay_method,:billing_amount,:post_code,:address,:name,:status,:customer_id)
   end
 
 end

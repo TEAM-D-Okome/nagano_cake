@@ -24,11 +24,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, only: [:new, :index, :show, :create]
-        get 'confirm/:id' => 'orders#confirm', as: 'confirm_index'
-        post 'confirm' => 'orders#confirm'
-
-        get 'finish' => 'orders#finish'
+    resources :orders, only: [:new, :index, :show, :create] do
+      post :confirm, on: :collection
+      get :complete, on: :collection
+    end
 
     resources :delivery_addresses, only: [:index, :create, :edit, :update, :destroy]
 
