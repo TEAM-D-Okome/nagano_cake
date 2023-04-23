@@ -8,7 +8,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-     @order = Order.find(params[:id])
+     @total_item_price = 0
+     @order = Order.new(order_params)
     if params[:select_address] == "0"
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
@@ -18,9 +19,8 @@ class Public::OrdersController < ApplicationController
       @order.post_code = @address.post_code
       @order.address = @delivery_addresses.address
       @order.name = @delivery_addresses.name
-    elsif params[:select_address] == "2"
     else
-      render :new
+      params[:select_address] == "2"
     end
       @cart_items = current_customer.cart_items.all
   end
