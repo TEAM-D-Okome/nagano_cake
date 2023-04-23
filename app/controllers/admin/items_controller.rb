@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
   def update #商品情報更新
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "商品情報を更新しました"
+      flash[:notice] = "商品情報を更新しました。"
       redirect_to admin_item_path(@item) #商品詳細showへ遷移
     else
       render :edit #失敗時は商品編集画面へ遷移
