@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
       @order.name = "#{current_customer.last_name + current_customer.first_name}" #ordersのカラム
     elsif params[:order][:select_address] == "1" #newにある[:select_address] == "1"のデータ(登録済み住所)を呼び出す
       @addresses = DeliveryAddress.find(params[:order]["customer_id"]) #ordersのcustomer_id(=カラム)で登録先の住所を選び、そのデータ送る
-      @order.post_code = @address.post_code
+      @order.post_code = @addresses.post_code
       @order.address = @addresses.address
       @order.name = @addresses.name
     elsif params[:select_address] == "2" #newにある[:select_address] == "2"のデータ(新しいお届け先)を呼び出す
@@ -34,7 +34,6 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    # @order.customer_id = @customer.id
     @order.save
 
     @cart_items = current_customer.cart_items

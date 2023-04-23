@@ -26,7 +26,7 @@
           </td>
 
           <td class="align-middle">
-            <% tax_in_price = cart_item.item.add_tax_tax_in_price %>
+            <% tax_in_price = cart_item.item.add_tax_tax_out_price %>
             <%= tax_in_price.to_s(:delimited) %>
           </td>
 
@@ -35,9 +35,9 @@
           </td>
 
           <td class="align-middle">
-            <%= (cart_item.item.add_tax_tax_in_price.floor * cart_item.quantity).to_s(:delimited) %>
+            <%= (cart_item.item.add_tax_tax_out_price.floor * cart_item.quantity).to_s(:delimited) %>
           </td>
-          <% @total_item_price += cart_item.item.add_tax_tax_in_price.floor * cart_item.quantity %>
+          <% @total_item_price += cart_item.item.add_tax_tax_out_price.floor * cart_item.quantity %>
         </tr>
         <% end %>
       </tbody>
