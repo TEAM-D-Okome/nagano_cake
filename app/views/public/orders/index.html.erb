@@ -34,7 +34,7 @@
                 <p class="text-left"><%= order_item.item.name %></p>
               <% end %>
             </td>
-            <td class="text-center align-middle"><%= order.tax_in_price.to_s(:delimited) %>円</td>
+            <td class="text-center align-middle"><%= order.billing_amount.to_s(:delimited) %>円</td>
             <td class="text-center align-middle"><%= order.status_i18n %></td>
             <td class="text-center align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
             <% end %>
