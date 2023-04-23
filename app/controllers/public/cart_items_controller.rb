@@ -12,6 +12,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.destroy
       redirect_to cart_items_path
     elsif @cart_item.update(quantity: params[:cart_item][:quantity])
+      flash[:notice] = "商品の数量を変更しました。"
       redirect_to cart_items_path
     else
       @cart_items = current_customer.cart_items
@@ -28,6 +29,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.save
       redirect_to cart_items_path
     elsif @cart_item.save!
+      flash[:notice] = "商品をカートに追加しました。"
       redirect_to cart_items_path
     end
   end
