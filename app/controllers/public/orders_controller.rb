@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm #注文情報確認
      @total_item_price = 0 #合計金額の初期化
-     @order = Order.new(order_params)
+     @order = Order.new(order_params) # @orderは大きな箱で、その中に小さい箱を指定するためにストロングパラメーターを指定している
     if params[:order][:select_address] == "0" #newにある[:select_address] == "0"のデータ(ご自身の住所)を呼び出す
       @order.address = current_customer.address #ordersのカラム
       @order.post_code = current_customer.post_code #ordersのカラム
@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = @addresses.post_code
       @order.address = @addresses.address
       @order.name = @addresses.name
-    elsif params[:select_address] == "2" #newにある[:select_address] == "2"のデータ(新しいお届け先)を呼び出す
+    elsif params[:order][:select_address] == "2" #newにある[:select_address] == "2"のデータ(新しいお届け先)を呼び出す
       @order.post_code = params[:order]["post_code"]
       @order.address = params[:order]["address"]
       @order.name = params[:order]["name"]
@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
       @cart_items = current_customer.cart_items.all #カート商品をconfirm(注文確認画面)で表示させる
   end
 
-  def create #注文する(購入確定)
+  def create #注文情報保存
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -38,15 +38,15 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
-      @order_items = OrderItem.new
+      @order_items = OrderItem.new #初期化宣言
       @order_items.order_id = @order.id
       @order_items.item_id = cart_item.item.id
       @order_items.quantity = cart_item.quantity
       @order_items.tax_in_price = cart_item.item.add_tax_tax_out_price
       @order_items.save
     end
-      redirect_to complete_orders_path
-      current_customer.cart_items.destroy_all
+      redirect_to complete_orders_path #注文完了ページに遷移
+      current_customer.cart_items.destroy_all #カートの中身を削除
   end
 
   def complete #注文完了
