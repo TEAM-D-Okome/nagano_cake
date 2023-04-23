@@ -1,7 +1,7 @@
-<div class="container pl-5">
-  <div class="text-center mt-5 mb-3"><h5><strong><%= flash[:notice] %></strong></h5></div>
-  <div class="border-bottom">
-    <h2><strong>新規会員登録</strong></h2>
+<div class="container mt-3 mb-3">
+  <strong><%= flash[:notice] %></strong>
+  <div class="row">
+    <h3 class="label-background-color ml-5">新規会員登録</h3>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

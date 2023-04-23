@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path, notice: "退会しました。"
+    redirect_to root_path, notice: "退会処理が完了しました。ご利用ありがとうございました。"
   end
 
   private

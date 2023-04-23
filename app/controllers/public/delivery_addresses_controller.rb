@@ -34,7 +34,7 @@ class Public::DeliveryAddressesController < ApplicationController
     delivery_addresses = DeliveryAddress.find(params[:id])
     delivery_addresses.customer_id = current_customer.id
     delivery_addresses.destroy
-    redirect_to delivery_addresses_path, notice: "削除に成功しました。"
+    redirect_to delivery_addresses_path, notice: "住所を削除しました。"
   end
 
   private
