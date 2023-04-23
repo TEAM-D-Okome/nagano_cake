@@ -1,6 +1,9 @@
 <div class="container mt-3 mb-3">
   <div class="row">
-    <h3 class="bg-light ml-5">会員情報編集</h3>
+    <%= render 'error', customer: @customer %>
+  </div>
+  <div class="row">
+    <h3 class="bg-light mb-2 ml-5">会員情報編集</h3>
   </div>
 
   <%= form_with model: @customer do |f| %>
