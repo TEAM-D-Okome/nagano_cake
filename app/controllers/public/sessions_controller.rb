@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
@@ -19,7 +20,19 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up)
+  end
 
   def customer_state
     ## 【処理内容1】 入力されたemailからアカウントを1件取得
@@ -31,6 +44,8 @@ class Public::SessionsController < Devise::SessionsController
       ## 【処理内容3】処理内容2がtrueかつcustomerのis_deletedがtrueならサインアップ画面に遷移
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_customer_registration_path
+    else
+      flash[:notice] = "ログインに成功しました。"
     end
   end
 

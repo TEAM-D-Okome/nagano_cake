@@ -52,6 +52,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
+    flash[:notice] = "新規登録に成功しました。ご利用ありがとうございます。"
     root_path
   end
 
