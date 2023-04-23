@@ -21,7 +21,7 @@ class Item < ApplicationRecord
       file_path = Rails.root.join("app/assets/images/default-image.jpg")
       image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    image.variant(resize: "#{width}x#{height}^").processed
+    image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
 
   def self.search(keyword)
