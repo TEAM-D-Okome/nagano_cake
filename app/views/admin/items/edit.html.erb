@@ -2,7 +2,7 @@
   <div class="row mt-4 md-2">
     <div class="col-md-6 mx-auto">
       <%= render 'admin/genres/error',obj: @item %>
-      <h3 class="table col-3 label-background-color">商品新規登録</h3>
+      <h3 class="table col-3 label-background-color text-center">商品編集</h3>
      <%= form_with model: @item,url: admin_item_path(@item.id) do |f| %>
       <table class="table table-borderless mt-3">
         <tbody>
