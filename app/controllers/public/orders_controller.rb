@@ -41,10 +41,12 @@ class Public::OrdersController < ApplicationController
       @order_items.save
     end
       redirect_to confirm_index_path(@order,select_address: params[:order][:select_address])
-      current_customer.cart_items.destroy_all
   end
 
   def finish
+    redirect_to finish_path
+    @cart_items = current_customer.cart_items.all
+    current_customer.cart_items.destroy_all
   end
 
   def index

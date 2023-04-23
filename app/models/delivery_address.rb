@@ -2,7 +2,7 @@ class DeliveryAddress < ApplicationRecord
   belongs_to :customer
 
   def address_display
-  '〒' + postal_code + ' ' + address + ' ' + name
+  '〒' + post_code + ' ' + address + ' ' + name
   end
 
   validates :post_code,presence:true
