@@ -24,4 +24,8 @@ class Item < ApplicationRecord
     image.variant(resize: "#{width}x#{height}^").processed
   end
 
+  def self.search(keyword)
+    where(["name like?", "%#{keyword}%"])
+  end
+
 end
