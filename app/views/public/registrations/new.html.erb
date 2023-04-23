@@ -1,12 +1,12 @@
 <div class="container mt-3 mb-3">
   <strong><%= flash[:notice] %></strong>
   <div class="row">
-    <h3 class="label-background-color ml-5">新規会員登録</h3>
+    <h3 class="ml-5"><span class="border-bottom border-dark">新規会員登録</span></h3>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
-    <table class="table table-borderless">
+    <table class="table table-borderless contents-area">
       <tr>
         <th style="width: 20%">名前</th>
         <td class="text-right"  style="width: 10%"><%= f.label :（姓） %></td>
