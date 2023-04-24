@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @items = Item.all.order(creatad_at: :desc)
+    @items = Item.where(is_sale: true).reverse_order
     @genres = Genre.all
   end
 

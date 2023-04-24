@@ -4,7 +4,7 @@
       <h3 class="text-left m3-4"><strong>注文情報確認</strong></h3>
     </div>
   </div>
-
+                              <!--createへのurl-->
   <%= form_with model: @order, url: orders_path do |f| %>
   <div class="row justify-content-around">
     <table class ="table table-bordered col-8">
@@ -57,15 +57,15 @@
       <tr>
         <th class="align-middle bg-light">商品合計</th>
         <td class="align-middle">
-          <%= @order.billing_amount.to_s(:delimited) %>
+          <%= @total_item_price.to_s(:delimited) %>
         </td>
       </tr>
 
       <tr>
         <th class="align-middle bg-light">請求金額</th>
         <td class="align-middle">
-          <%= (@order.billing_amount + @order.postage).to_s(:delimited) %>
-          <%= f.hidden_field :billing_amount, :value => @order.billing_amount + @order.postage %>
+          <%= (@total_item_price + @order.postage).to_s(:delimited) %>
+          <%= f.hidden_field :billing_amount, :value => @total_item_price + @order.postage %>
         </td>
       </tr>
     </table>

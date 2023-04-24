@@ -1,13 +1,13 @@
 <div class="container my-5" >
   <div class="row">
-    <div class="col-3 mb-3 offset-1">
+    <div class="col-4 mb-3 offset-1">
       <%= flash[:notice] %>
-      <h3 class="table col-11 label-background-color"><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</strong></h3>
+      <h3><strong class="border-bottom border-dark"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</strong></h3>
     </div>
       <div class="container mb-5">
         <div class="row">
           <div class="col-10 mx-auto">
-            <table class="table table-borderless">
+            <table class="table table-borderless contents-area">
               <thead>
                 <tr>
                   <th>会員ID</th>

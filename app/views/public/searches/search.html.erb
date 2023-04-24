@@ -1,16 +1,16 @@
-<h3 class="border-top border-bottom text-center p-2">
-  <strong>商品検索結果</strong>
-</h3>
-<div class="conteiner">
-  <div class="row mb-3">
-    <div class="col-11">
-      <div class="d-flex">
+<div class="container">
+  <div class="row mb-3 mt-4">
+    <div class="contents-area rounded px-5 pt-3 mb-4">
+      <h3 class="text-center mt-3 mb-5">
+        <strong class="border-bottom border-dark">商品検索結果</strong>
+      </h3>
+      <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
-          <div class="col-3 text-center">
-            <%= link_to item_path(item.id), class: "text-dark font-weight-bold" do %>
-              <%= image_tag item.image, size: '180x140' %></br>
-              <%= item.name %></br>
-              ¥ <%= item.add_tax_tax_out_price.to_s(:delimited) %>(税込)
+          <div class="col-md-6 col-lg-3 mt-3 mx-0">
+            <%= link_to item_path(item.id), class: "text-dark" do %>
+              <%= image_tag item.get_image(200,150) %></br>
+              <p class="m-2"><%= item.name %></p>
+              <p class="m-2">¥<%= item.add_tax_tax_out_price.to_s(:delimited) %>(税込)</p>
             <% end %>
           </div>
         <% end %>

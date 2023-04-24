@@ -7,9 +7,9 @@
   <% else %>
   <p><%= flash[:notice] %></p>
   <div class="row mt-4">
-    <p class="h4 label-background-color ml-3">ショッピングカート</p>
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, class: "btn btn-danger ml-auto", method: :delete, "data-confirm" => "カートを空にしてよろしいですか？" %>
-    <table class="table table-bordered mt-3">
+    <p class="h3 border-bottom border-dark mt-2 mb-2">ショッピングカート</p>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, class: "btn btn-danger d-flex align-items-center ml-auto", method: :delete, "data-confirm" => "カートを空にしてよろしいですか？" %>
+    <table class="table table-bordered contents-area mt-3">
       <thead class="table-active">
         <tr>
           <th>商品名</th>
@@ -22,7 +22,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= image_tag cart_item.item.image, size: "80x70" %>
-                  <strong><%= cart_item.item.name %></strong></td>
+                  <strong class="ml-3"><%= cart_item.item.name %></strong></td>
               <td class="align-middle"><%= cart_item.item.add_tax_tax_out_price.to_s(:delimited) %></td>
               <td class="align-middle"><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
                     <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], class: "form-control" %>
@@ -38,7 +38,7 @@
     </table>
   </div>
     <%= link_to "買い物を続ける", root_path, class: "btn btn-primary mt-2 ml-5" %>
-    <table class="table table-bordered col-3 ml-auto">
+    <table class="table table-bordered contents-area col-3 ml-auto">
       <tbody>
         <tr>
           <th class="table-active">合計金額</th>
