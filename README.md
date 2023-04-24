@@ -1,6 +1,6 @@
 ![ロゴ案④](https://user-images.githubusercontent.com/124197100/233823099-3ffbda49-6549-4902-9a04-5b2f4c10ac1e.png)
 
-# nagano_kakeについて
+# nagano_cake
 ![スクリーンショット 2023-04-24 123838](https://user-images.githubusercontent.com/124197100/233895043-8f4ea4aa-e4ca-4cf0-ba1a-0c024303fcb9.png)
 * [概要](#概要)
 * [メンバー](#メンバー)
