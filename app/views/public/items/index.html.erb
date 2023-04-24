@@ -5,7 +5,7 @@
     </div>
     <div class="col-8">
       <% if params[:genre_id] %>
-        <span class="h3 mt-2 mb-2"><strong><%= @genre.name %>一覧</strong><span class="h5"> (全<%= @items.count %>件)</span>
+        <span class="h3 mt-2 mb-2"><strong><%= @genre.name %>一覧</strong></span><span class="h5"> (全<%= @items.count %>件)</span>
       <% else %>
         <span class="h3 mt-2 mb-2"><strong>商品一覧</strong></span><span class="h5"> (全<%= @items.count %>件)</span>
       <% end %>
@@ -13,13 +13,15 @@
         <% @items.each do |item| %>
         <div class="item col-md-6 col-lg-3 mt-3 mx-0">
         <%= link_to item_path(item), class: "text-dark" do %>
-          <%= image_tag item.image, size: '200x150' %><br>
+          <%= image_tag item.get_image(200,150) %><br>
           <p class="m-2"><%= item.name %></p>
           <p class="m-2">¥<%= (item.tax_out_price*1.1).floor.to_s(:delimited) %>(税込)</p>
         <% end %>
         </div>
       <% end %>
-      <%= paginate @items %>
+    </div>
+    <div class="pagination justify-content-center mt-3 mb-5">
+    <%= paginate @items, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
