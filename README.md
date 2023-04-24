@@ -1,7 +1,7 @@
 ![ロゴ案④](https://user-images.githubusercontent.com/124197100/233823099-3ffbda49-6549-4902-9a04-5b2f4c10ac1e.png)
 
 # nagano_kakeについて
-![スクリーンショット (18)](https://user-images.githubusercontent.com/125238969/233820886-80721cd0-c21c-41f1-8519-587cb5107ba4.png) 
+![スクリーンショット (20)](https://user-images.githubusercontent.com/125238969/233879062-218dc306-c374-41ed-82e5-accc8457d589.png)
 * [概要](#概要)
 * [メンバー](#メンバー)
 * [使用している言語フレームワークのバージョン](#使用している言語フレームワークのバージョン)
