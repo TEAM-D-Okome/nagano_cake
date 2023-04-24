@@ -17,7 +17,7 @@
         <%= link_to item_path(item), class: "text-dark" do %>
           <%= image_tag item.get_image(200,150) %><br>
           <p class="m-2"><%= item.name %></p>
-          <p class="m-2">¥<%= (item.tax_out_price*1.1).floor.to_s(:delimited) %>(税込)</p>
+          <p class="m-2">¥<%= item.add_tax_tax_out_price.to_s(:delimited) %>(税込)</p>
         <% end %>
         </div>
       <% end %>
