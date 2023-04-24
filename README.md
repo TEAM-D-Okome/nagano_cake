@@ -28,7 +28,7 @@
 * bootstrap 4.5
 
 ## 設計書
-* ER図
+* ER図</br>
 ![ながのCAKE ER図 drawio (2)](https://user-images.githubusercontent.com/125238969/233823460-5f27089b-42ec-4b5b-9bf6-6009de170942.png)
 
 * テーブル定義書
