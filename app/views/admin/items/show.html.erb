@@ -20,15 +20,15 @@
           </tr>
           <tr>
             <th style="width: 30%">商品説明 </th>
-            <th style="width: 70%"><%= @item.explanation %></td>
+            <td style="width: 70%"><%= @item.explanation %></td>
           </tr>
           <tr>
             <th style="width: 30%">ジャンル</th>
             <td style="width: 70%"><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <th style="width: 30%"> 税込価格<br>(税抜価格)</th>
-            <td style="width: 60%"><br><%= @item.add_tax_tax_out_price.to_s(:delimited) %>（<%= @item.tax_out_price.to_s(:delimited) %>）円</td>
+            <th style="width: 30%"> 税込価格(税抜価格)</th>
+            <td style="width: 70%"><%= @item.add_tax_tax_out_price.to_s(:delimited) %>（<%= @item.tax_out_price.to_s(:delimited) %>）円</td>
           </tr>
           <tr>
             <th style="width: 30%">販売ステータス</th>

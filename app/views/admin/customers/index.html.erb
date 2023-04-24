@@ -18,20 +18,24 @@
               </thead>
               <% @customers.each do |customer| %>
               <tbody>
-                <td><%= customer.id %></td>
-                <td>
+                <tr>
+                <td class="py-4"><%= customer.id %></td>
+                <td class="py-4">
                   <div class="link-secondary">
                     <%= link_to admin_customer_path(customer.id) do %>
                       <%= customer.last_name %><%= customer.first_name %>
                     <% end %>
                   </div>
                 </td>
-                <td><%= customer.email %></td>
+                <td class="py-4"><%= customer.email %></td>
+                <td class="py-4">
                   <% if customer.is_deleted == false %>
-                <td><strong><p class="text-success">有効</p></strong></td>
+                    <strong class="text-success">有効</strong>
                   <% elsif %>
-                <td><strong><p class="text-secondary">退会</p></strong></td>
+                    <strong class="text-secondary">退会</stropng>
                   <% end %>
+                </td>
+                </tr>
               </tbody>
               <% end %>
             </table>

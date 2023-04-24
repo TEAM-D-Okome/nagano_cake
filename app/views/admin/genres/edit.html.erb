@@ -3,15 +3,15 @@
     <div class="col-md-6 mx-auto">
       <%= render 'error',obj: @genre %>
       <%= flash[:notice] %>
-      <h3 class="table col-3 label-background-color text-center"><strong>ジャンル編集</strong></h3>
+      <h3><strong class="border-bottom border-dark">ジャンル編集</strong></h3>
     <%= form_with model: @genre,url:admin_genre_path,method: :patch do |f| %>
       <table class="table table-borderless mt-3">
         <tbody>
           <tr>
-            <td>
+            <td class="align-middle">
               <label for="genre_name">ジャンル名</label>
             </td>
-            <td>
+            <td class="align-middle">
               <%= f.text_field:name %>
             </td>
             <td>
