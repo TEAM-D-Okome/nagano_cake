@@ -18,14 +18,14 @@
       <th class="h5 font-weight-bold">配送先</th>
       <td>
         〒<%= @order.post_code %>
-        　<%= @order.adress %></br>
+        　<%= @order.address %></br>
         <%= @order.name %>
       </td>
     </tr>
 
     <tr class="row">
       <th class="h5 font-weight-bold">支払い方法</th>
-      <td><%= @order.cash_i18n %></td>
+      <td><%= @order.pay_method_i18n %></td>
     </tr>
 
     <tr class="row">
