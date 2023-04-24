@@ -14,11 +14,10 @@
     </div>
   </div>
   <div class="row justify-content-center mb-3">
-    <div class="col-1"></div>
-    <div class="col-3 col-offset-1">
+    <div class="col-2 ml-5">
       <%= link_to "退会しない", :back, class: "btn btn-primary" %>
     </div>
-    <div class="col-3">
+    <div class="col-2 col-offset-1">
       <%= link_to "退会する", withdrawal_customers_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
     </div>
   </div>
