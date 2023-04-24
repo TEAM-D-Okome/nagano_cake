@@ -31,10 +31,10 @@
 * ER図</br>
 ![ながのCAKE ER図 drawio (2)](https://user-images.githubusercontent.com/125238969/233823460-5f27089b-42ec-4b5b-9bf6-6009de170942.png)
 
-* テーブル定義書
+* テーブル定義書</br>
 https://docs.google.com/spreadsheets/d/1qGWpfpw5IadmzRKswRvhe6l5QjI5aYcg3XgwSd3HMGI/edit?usp=sharing
 
-* 詳細設計書
+* 詳細設計書</br>
 https://docs.google.com/spreadsheets/d/1bt7a7UD8R909atfEBIzOY0F7AfqjyDJnpQdrD_tzZpc/edit?usp=sharing
 
 ## 機能
