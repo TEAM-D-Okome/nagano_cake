@@ -8,7 +8,7 @@
 
   <div class="row">
     <div class="col-3 mb-3 offset-1">
-      <h3 class="label-background-color"><strong>配送先登録/一覧</strong></h3>
+      <h3><strong class="border-bottom border-dark">配送先登録/一覧</strong></h3>
     </div>
   </div>
 
@@ -28,28 +28,28 @@
   </div>
   <% end %>
 
-  <table class="table table-bordered mt-3">
+  <table class="table table-bordered contents-area mt-3">
 
-    <thead>
-      <tr class="table-secondary text-left">
+    <thead class="table-active">
+      <tr class="text-left">
         <th class="col-1">郵便番号</th>
         <th class="col-3">住所</th>
         <th class="col-1">宛名</th>
-        <th class="col-1 "></th>
-        <th class="col-1 "></th>
+        <th class="col-1"></th>
+        <th class="col-1"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @delivery_addresses.each do |address| %>
         <tr>
-          <td><%= address.post_code %></td>
-          <td><%= address.address %></td>
-          <td><%= address.name %></td>
-          <td>
+          <td class="align-middle"><%= address.post_code %></td>
+          <td class="align-middle"><%= address.address %></td>
+          <td class="align-middle"><%= address.name %></td>
+          <td class="align-middle">
             <%= link_to "編集する", edit_delivery_address_path(address), class: "btn btn-success" %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= link_to "削除する", delivery_address_path(address), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
           </td>
         </tr>
