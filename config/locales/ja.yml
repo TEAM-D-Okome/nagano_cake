@@ -15,7 +15,7 @@ ja:
         making: "製作中"
         preparation: "発送準備中"
         sent: "発送済み"
-    order_items:
+    order_item:
       making_status:
         not_make: "着手不可"
         wait_make: "製作待ち"
