@@ -8,8 +8,8 @@
       <table class="table table-border contents-area mt-5">
         <tbody>
           <tr>
-            <td>ジャンル名</td>
-            <td class="center">
+            <td class="align-middle">ジャンル名</td>
+            <td class="center align-middle">
               <%= f.text_field:name,:size=>"30" %>
             </td>
           <td colspan="2"></td>
@@ -18,8 +18,8 @@
             </td>
           </tr>
     <% end %>
-        <thead>
-          <tr class="label-background-color">
+        <thead class="table-active">
+          <tr>
             <th>ジャンル</th>
             <th colspan="4"></th>
           </tr>
@@ -27,7 +27,7 @@
         <tbody>
           <% @genres.each do |genre| %>
             <tr>
-              <td><%= genre.name %></td>
+              <td class="align-middle"><%= genre.name %></td>
               <td colspan="3"></td>
               <td><%= link_to "編集する",edit_admin_genre_path(genre.id),class:'btn btn-success' %></td>
             </tr>

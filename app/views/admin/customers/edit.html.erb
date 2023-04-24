@@ -7,41 +7,41 @@
       <table class="table table-borderless contents-area mt-3">
         <tbody>
           <tr>
-            <th style="width:20%">会員ID</th>
+            <th>会員ID</th>
             <td><%= @customer.id %></td>
           </tr>
           <tr>
-            <th style="width:20%">氏名</th>
+            <th>氏名</th>
             <td>
               （姓）<%= f.text_field :last_name,:size=>"28" %>
               （名）<%= f.text_field :first_name,:size=>"28" %>
             </td>
           </tr>
           <tr>
-            <th style="width:20%">フリガナ</th>
+            <th>フリガナ</th>
             <td>
               （セイ）<%= f.text_field :last_name_kana,:size=>"26" %>
               （メイ）<%= f.text_field :first_name_kana,:size=>"26" %>
             </td>
           </tr>
           <tr>
-            <th style="width:20%">郵便番号</th>
+            <th>郵便番号</th>
             <td><%= f.text_field :post_code,:size=>"34" %></td>
           </tr>
           <tr>
-            <th style="width:20%">住所</th>
+            <th>住所</th>
             <td><%= f.text_area :address, size: "70x1" %></td>
           </tr>
           <tr>
-            <th style="width:20%">電話番号</th>
+            <th>電話番号</th>
             <td><%= f.text_field :phone_number,:size=>"34" %></td>
           </tr>
           <tr>
-            <th style="width:20%">メールアドレス</th>
+            <th>メールアドレス</th>
             <td><%= f.text_field :email,:size=>"34" %></td>
           </tr>
           <tr>
-            <th style="width:20%">会員ステータス</th>
+            <th>会員ステータス</th>
               <%= form_with model: @customer, url:admin_customer_path, method: :patch do |f| %>
             <td>
               <%= f.radio_button :is_deleted, false %>

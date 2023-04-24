@@ -24,19 +24,21 @@
           <% @items.each do |item| %>
           <tbody>
             <tr>
-              <td><%= item.id %></td>
-              <td>
+              <td class="py-4"><%= item.id %></td>
+              <td class="py-4">
                 <%= link_to admin_item_path(item.id) do %>
                 <%= item.name %>
                 <% end %>
               </td>
-              <td>¥<%= item.tax_out_price.to_s(:delimited) %></td>
-              <td><%= item.genre.name %></td>
+              <td class="py-4">¥<%= item.tax_out_price.to_s(:delimited) %></td>
+              <td class="py-4"><%= item.genre.name %></td>
+              <td class="py-4">
                 <% if item.is_sale == false %>
-                  <td><strong><p class="text-secondary">販売停止中</p><strong></td>
+                  <strong class="text-secondary">販売停止中<strong>
                 <% else %>
-                  <td><strong><p class="text-success">販売中</p></strong></td>
+                  <strong class="text-success">販売中</strong>
                 <% end %>
+              </td>
             </tr>
           </tbody>
           <% end %>
