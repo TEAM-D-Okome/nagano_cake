@@ -14,7 +14,7 @@
 ---
 
 ## 概要
-長野県にあるケーキ店のECサイト、「ながのcake」のwebアプリケーションです。  
+長野県にあるケーキ店のECサイト、「ながのcake」のwebアプリケーションです。
 ※架空の店舗であり、実際には存在しません。
 
 ## メンバー
@@ -28,17 +28,17 @@
 * bootstrap 4.5
 
 ## 設計書
-* ER図  
+* ER図
 ![ながのCAKE ER図 drawio (2)](https://user-images.githubusercontent.com/125238969/233823460-5f27089b-42ec-4b5b-9bf6-6009de170942.png)
 
-* テーブル定義書  
+* テーブル定義書
 https://docs.google.com/spreadsheets/d/1qGWpfpw5IadmzRKswRvhe6l5QjI5aYcg3XgwSd3HMGI/edit?usp=sharing
 
-* 詳細設計書  
+* 詳細設計書
 https://docs.google.com/spreadsheets/d/1bt7a7UD8R909atfEBIzOY0F7AfqjyDJnpQdrD_tzZpc/edit?usp=sharing
 
 ## 機能
-* 顧客側  
+* 顧客側
   * アカウント
     * 新規会員登録
     * ログイン
@@ -52,14 +52,14 @@ https://docs.google.com/spreadsheets/d/1bt7a7UD8R909atfEBIzOY0F7AfqjyDJnpQdrD_tz
     * カート内商品の購入
     * 配達先住所の選択
     * 注文履歴の閲覧
- 
-* 管理者側  
+
+* 管理者側
   * 登録ユーザーの一覧表示
   * 登録ユーザーの注文履歴閲覧
   * 商品の新規追加、編集、閲覧
   * 商品情報の編集
 
-* その他  
+* その他
   * 商品の検索機能
     * 商品名での検索
     * ジャンル名での絞り込み
@@ -97,7 +97,7 @@ bundle install
 * パスワード: `111-111`
 
 ## 顧客ページのログインについて
-ヘッダーのログインアイコンを押下し、下記の情報を入力することで顧客としてログインできます。  
+ヘッダーのログインアイコンを押下し、下記の情報を入力することで顧客としてログインできます。
 メールアドレスについて、testの後の数字は1~15の任意の数字を入力してください。パスワードは共通です。
 * メールアドレス: `test1@gmail.com`
 * パスワード: `11111111`
