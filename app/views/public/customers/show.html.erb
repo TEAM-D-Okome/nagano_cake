@@ -1,12 +1,12 @@
 <div class="container">
   <%= flash[:notice] %>
-  <h3 class="ml-5 mt-4 mb-4">マイページ</h3>
-  <div class="row mb-2">
+  <h3 class="ml-5 mt-4 mb-4"><span class="border-bottom border-dark">マイページ</span></h3>
+  <div class="row d-flex align-items-center mb-2">
     <div class="col-1"><strong>登録情報</strong></div>
     <div class="col-3"><%= link_to "編集する", edit_customer_path, class: "btn btn-success" %></div>
   </div>
 
-  <table class="table table-bordered mb-5">
+  <table class="table table-bordered contents-area mb-5">
     <tbody>
       <tr>
         <th scope="row", class="table-secondary col-3 text-left">氏名</th>
@@ -35,12 +35,12 @@
     </tbody>
   </table>
 
-  <div class="row mb-3">
-    <div class="col-1"><strong>配送先</strong></div>
+  <div class="row d-flex align-items-center mb-3">
+    <div class="col-1 "><strong>配送先</strong></div>
     <div class="col-3"><%= link_to "一覧を見る", delivery_addresses_path, class: "btn btn-primary" %></div>
   </div>
 
-  <div class="row mb-3">
+  <div class="row d-flex align-items-center mb-3">
     <div class="col-1"><strong>注文履歴</strong></div>
     <div class="col-8"><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></div>
   </div>

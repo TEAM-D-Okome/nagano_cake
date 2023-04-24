@@ -1,15 +1,15 @@
 <div class="container-fluid">
-  <div class="row offset-2 mt-5 mb-5">
+  <div class="row offset-1 mt-4">
     <div class="col-2 mr-3">
       <%= render 'public/homes/genrebar', genres: @genres %>
     </div>
-    <div class="col-8">
-      <div class="d-flex">
-        <div class="mx-4">
-          <%= image_tag @item.get_image(350,250) %>
+    <div class="contents-area col-8 rounded px-5 py-4 mb-4">
+      <div class="d-flex justify-content-center align-items-center mb-2">
+        <div class="mr-4">
+          <%= image_tag @item.get_image(450,350) %>
         </div>
         <div class="mx-5">
-          <p class="h3 font-weight-bold"><%= @item.name %></p>
+          <p class="h3 font-weight-bold text-center border-bottom border-dark pb-2"><%= @item.name %></p>
           <p><%= @item.explanation %></p>
           <h3><strong>¥<%= (@item.tax_out_price*1.1).floor.to_s(:delimited) %></strong><span class="h5"> (税込)</span></h3>
           <div class="form-group">

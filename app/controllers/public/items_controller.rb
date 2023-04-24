@@ -1,11 +1,12 @@
 class Public::ItemsController < ApplicationController
   def index
+    @items_all = Item.all
     @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.where(is_sale: true).page(params[:page]).reverse_order
+      @items = @genre.items.where(is_sale: true).page(params[:page]).per(8).reverse_order
     else
-      @items = Item.all.order(creatad_at: :desc).page(params[:page]).per(8)
+      @items = Item.all.where(is_sale: true).page(params[:page]).per(8).reverse_order
     end
   end
 
