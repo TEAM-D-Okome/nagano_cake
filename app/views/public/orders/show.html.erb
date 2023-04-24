@@ -1,13 +1,9 @@
 <div class="container my-4">
   <div class="col-lg-11 col-sm-12 mx-auto">
-    <div class="row mb-4">
-      <div class="col-7">
-        <h3>　<strong>注文履歴詳細</strong>　</ha3>
-      </div>
-    </div>
+    <h3><strong>注文履歴詳細</strong></h3>
     <div class="row">
-        <p class="h5 col-7"><strong>注文情報</strong></p>
-        <span class="h5 col-3 offset-1"><strong>請求情報</strong></span>
+      <p class="h5 col-7"><strong>注文情報</strong></p>
+      <span class="h5 col-3 offset-1"><strong>請求情報</strong></span>
     </div>
     <div class="row mt-2">
       <table class="table table-hover table-bordered col-7">
@@ -26,7 +22,7 @@
             </tr>
             <tr>
                 <th scope="row" class="bg-light col-lg-4 align-middle">支払方法</th>
-                <td class="col-lg-8 py-2"><%= Order.pay_methods_i18n[@order.cash] %></td>
+                <td class="col-lg-8 py-2"><%= Order.pay_methods_i18n[@order.pay_method] %></td>
             </tr>
             <tr>
                 <th scope="row" class="bg-light col-lg-4 align-middle">ステータス</th>
@@ -34,7 +30,6 @@
             </tr>
         </tbody>
       </table>
-
       <table class="table table-hover table-bordered col-3 offset-1 align-self-start">
         <tbody>
             <tr>
@@ -52,7 +47,6 @@
         </tbody>
       </table>
     </div>
-
     <div class="row mt-4">
       <span class="h5 col-7"><strong>注文内容</strong></span>
     </div>
