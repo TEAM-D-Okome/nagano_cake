@@ -6,7 +6,7 @@
     <div class="contents-area col-8 rounded px-5 pt-3 mb-4">
       <div class="text-center mt-3 mb-5">
         <% if params[:genre_id] %>
-          <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= @genre.name %>一覧</strong></span><span class="h5"> (全<%= @items.count %>件)</span>
+          <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= @genre.name %>一覧</strong></span><span class="h5"> (全<%= @items_all.count %>件)</span>
         <% else %>
           <span class="h3 border-bottom border-dark mt-2 mb-2"><strong>商品一覧</strong></span><span class="h5"> (全<%= @items_all.count %>件)</span>
         <% end %>

@@ -5,6 +5,7 @@ class Public::ItemsController < ApplicationController
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items.where(is_sale: true).page(params[:page]).per(8).reverse_order
+      @items_all = @genre.items.all
     else
       @items = Item.all.where(is_sale: true).page(params[:page]).per(8).reverse_order
     end
