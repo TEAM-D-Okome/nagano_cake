@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Shippori+Mincho&family=Zen+Kaku+Gothic+New&display=swap');
+
+header {
+    background-color: #F2F0ED;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+footer {
+    background-color: #4c4948;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background-color: #fffcf0;
+}
+
+.contents-area {
+    background-color: #fff;
+}

@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row mt-4 md-2">
+    <div class="col-md-10 mx-auto">
+      <%= render "error", customer: @customer %>
+      <h3 class="text-center mb-3"><strong class="border-bottom border-dark">会員情報編集</strong></h3>
+      <%= form_with model: @customer, url:admin_customer_path, method: :patch do |f| %>
+        <div class="contents-area mb-3 pt-3">
+          <div class="row mb-2 field">
+            <div class="col-2 offset-md-1">会員ID</div>
+            <div class="col-1"></div>
+            <div class="col-1 pr-0"><%= @customer.id %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-2 offset-md-1"><%= f.label "お名前" %></div>
+            <div class="col-1 text-right pr-0"><%= f.label "(姓)" %></div>
+            <div class="col-1"><%= f.text_field :last_name, :size => "10" %></div>
+            <div class="col-1 text-right pr-0"><%= f.label "(名)" %></div>
+            <div class="col-1"><%= f.text_field :first_name, :size => "10" %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-2 offset-md-1"><%= f.label "フリガナ" %></div>
+            <div class="col-1 text-right pr-0"><%= f.label "(セイ)" %></div>
+            <div class="col-1"><%= f.text_field :last_name_kana, :size => "10" %></div>
+            <div class="col-1 text-right pr-0"><%= f.label "(メイ)" %></div>
+            <div class="col-1"><%= f.text_field :first_name_kana, :size => "10" %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-3 offset-md-1"><%= f.label "メールアドレス" %></div>
+            <div class="col-3"><%= f.email_field :email, :size => "50" %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-3 offset-md-1"><%= f.label "郵便番号(ハイフンなし)" %></div>
+            <div class="col-3"><%= f.text_field :post_code, :size => "10" %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-3 offset-md-1"><%= f.label "住所" %></div>
+            <div class="col-3"><%= f.text_field :address, :size => "50" %></div>
+          </div>
+
+          <div class="row mb-2 field">
+            <div class="col-3 offset-md-1"><%= f.label "電話番号(ハイフンなし)" %></div>
+            <div class="col-3"><%= f.text_field :phone_number %></div>
+          </div>
+
+          <div class="row">
+            <div class="col-3 offset-md-1">会員ステータス</div>
+            <%= form_with model: @customer, url:admin_customer_path, method: :patch do |f| %>
+              <div class="col-3">
+                <%= f.radio_button :is_deleted, false %>
+                <%= f.label :is_deleted, '有効', class: "mr-2" %>
+                <%= f.radio_button :is_deleted, true %>
+                <%= f.label :is_deleted, '退会' %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="row">
+            <div class="col-2 offset-md-1"></div>
+            <div class="col-2 offset-md-1 mt-3 mb-5">
+              <%= f.submit "変更を保存", class:"  btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container my-5" >
+  <%= flash[:notice] %>
+  <div class="row">
+    <div class="col-5 mb-2 offset-1">
+      <%= render 'error', obj: @delivery_addresses %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 mb-5 offset-1">
+      <h3><strong class="border-bottom border-dark">配送先編集</strong></h3>
+    </div>
+  </div>
+
+  <%= form_with model: @delivery_addresses do |f| %>
+  <div class="row mb-2 field">
+    <div class="col-3 offset-md-1"><%= f.label "郵便番号(ハイフンなし)" %></div>
+    <div class="col-3"><%= f.text_field :post_code, class: "form-control" %></div>
+  </div>
+  <div class="row mb-2 field">
+    <div class="col-3 offset-md-1"><%= f.label "住所" %></div>
+    <div class="col-7"><%= f.text_field :address, class: "form-control" %></div>
+  </div>
+  <div class="row mb-5 field">
+    <div class="col-3 offset-md-1"><%= f.label "宛名" %></div>
+    <div class="col-3"><%= f.text_field :name, class: "form-control" %></div>
+    <div class="col-3 offset-md-2"><%= f.submit "変更内容を保存", class:"btn btn-success" %></div>
+  </div>
+  <% end %>
+</div>

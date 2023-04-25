@@ -1,0 +1,63 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col">
+      <h3 class="mb-4"><strong>注文情報入力</strong></h3>
+      <%= form_with model: @order, url: confirm_orders_path do |f| %>
+      <div class="form-group">
+
+        <div class="h5"><strong>支払い方法</strong></div>
+         <div class="my-3 form-check">
+          <%= f.radio_button :pay_method, Order.pay_methods.key(0) %>
+          <%= f.label :pay_method_credit_card, Order.pay_methods_i18n[:credit_card] %><br>
+          <%= f.radio_button :pay_method, Order.pay_methods.key(1) %>
+          <%= f.label :pay_method_transfer, Order.pay_methods_i18n[:transfer] %>
+         </div>
+
+        <div class="h5"><strong>お届け先</strong></div>
+          <div class="my-3 form-check">
+            <%= f.radio_button :select_address, 0, checked: "checked" %>
+            <%= f.label :address_customer_id, "ご自身の住所" %><br>
+            〒<%= current_customer.post_code %>
+            <%= current_customer.address %>
+            <%= current_customer.last_name %><%= current_customer.first_name %>
+          </div><p></p>
+
+          <div class="my-3 form-check">
+            <% if current_customer.delivery_addresses.present? %>
+              <%= f.radio_button :select_address, 1 %>
+              <%= f.label :address, "登録済み住所から選択" %><br>
+              <!--第一引数メソッド名　:customer_idにひもづくadresses-->
+              <!--コントローラの@addresses = current_customer.current_customer.addresses.all-->
+              <!--モデルの情報をもとにセレクトボックスを作成するため、options_from_collection_for_select というヘルパーメソッドを使用-->
+              <!--書き方は「<= f.select :プロパティ名, options_from_collection_for_select(モデル, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) %>」-->
+              <%= f.select :customer_id, options_from_collection_for_select(@addresses.all, :id, :address_display) %>
+            <% end %>
+          </div><p></p>
+
+          <div class=" my-3 form-check">
+            <%= f.radio_button :select_address, 2 %>
+            <%= f.label :address, "新しいお届け先" %>
+              <table>
+                <tr>
+                  <th><%= f.label :post_code, "郵便番号(ハイフンなし)" %></th>
+                  <td class="pl-5"><%= f.text_field :post_code, placeholder: "0000000" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :address, "住所" %></th>
+                  <td class="pl-5 col-xs-4"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+                </tr>
+                <tr>
+                  <th><%= f.label :name, "宛名" %></th>
+                  <td class="pl-5"><%= f.text_field :name, placeholder: "令和道子" %></td>
+                </tr>
+              </table>
+          </div><p></p>
+
+          <div class="pl-5">
+            <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

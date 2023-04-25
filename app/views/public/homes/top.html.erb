@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <%= flash[:notice] %>
+  <div class="row offset-1 mt-4">
+    <div class="col-2 mr-3">
+      <%= render 'genrebar', genres: @genres %>
+    </div>
+
+    <div class="contents-area col-8 rounded px-5 mb-4">
+      <div class="card mt-4">
+        <%= image_tag 'top_image.jpg' %>
+        <div class="card-img-overlay d-flex justify-content-end align-items-center">
+          <p class="bg-light rounded py-2 px-3">
+            ようこそ、ながのCAKEへ！</br>
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない方も商品の閲覧はできますが、</br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-3 mb-2 text-center"><strong class="border-bottom border-dark">新着商品</strong></h3>
+      <div class="d-flex flex-row">
+        <% @items.first(4).each do |item| %>
+        <div class="item col-md-6 col-lg-3 mt-3 mx-0">
+          <%= link_to item_path(item), class: "text-dark" do %>
+            <div><%= image_tag item.get_image(200,150) %></div></br>
+            <p><%= item.name %></p>
+            <% if item.is_sale == true %>
+              <p><%= item.add_tax_tax_out_price.to_s(:delimited) %>円(税込)</p>
+            <% else %>
+              <p class="text-danger">販売停止中</p>
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div class="mt-2 mb-3 text-right"><%= link_to "全ての商品を見る", items_path, class: "text-dark" %></div>
+    </div>
+  </div>
+</div>

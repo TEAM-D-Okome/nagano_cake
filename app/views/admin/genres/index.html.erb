@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-4 mb-5 md-2">
+    <div class="col-md-6 mx-auto">
+      <%= render 'error',obj: @genre %>
+      <%= flash[:notice] %>
+      <h3 class="text-center"><strong class="border-bottom border-dark">ジャンル一覧・追加</strong></h3>
+    <%= form_with model: @genre,url:admin_genres_path,method: :post,class:"genre_form" do |f| %>
+      <table class="table table-border contents-area mt-5">
+        <tbody>
+          <tr>
+            <td class="align-middle">ジャンル名</td>
+            <td class="center align-middle">
+              <%= f.text_field:name,:size=>"30" %>
+            </td>
+          <td colspan="2"></td>
+            <td>
+              <%= f.submit "新規登録",class:"btn btn-primary" %>
+            </td>
+          </tr>
+    <% end %>
+        <thead class="table-active">
+          <tr>
+            <th>ジャンル</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td class="align-middle"><%= genre.name %></td>
+              <td colspan="3"></td>
+              <td><%= link_to "編集する",edit_admin_genre_path(genre.id),class:'btn btn-success' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

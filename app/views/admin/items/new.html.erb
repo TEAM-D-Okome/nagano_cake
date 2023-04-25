@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row mt-4 md-2">
+    <div class="col-md-6 mx-auto">
+      <%= render 'admin/genres/error',obj: @item %>
+      <h3><span class="border-bottom border-dark">商品新規登録</span></h3>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+      <table class="table table-borderless mt-3">
+        <tbody>
+          <tr>
+            <td><%= f.label "商品画像" %></td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "商品名" %></td>
+            <td><%= f.text_field :name, class: "form-control", :placeholder => "商品名" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "商品説明" %></td>
+            <td><%= f.text_area :explanation, class: "form-control", :placeholder => "ここに説明文を記述します" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "ジャンル" %></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "--選択してください--" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label '税抜価格' %></td>
+            <td>
+              <div class="input-group">
+                <%= f.text_field :tax_out_price, class: 'form-control' %>
+                <span>円</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+          <td><%= f.label "販売ステータス" %></td>
+            <td>
+              <%= f.radio_button :is_sale, true %>
+                <%= f.label :is_sale, '販売中' %>
+              <%= f.radio_button :is_sale, false %>
+                <%= f.label :is_sale, '販売停止中' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        <div class="row">
+          <div class="mb-5 mx-auto">
+            <%= f.submit "新規登録", class:'btn btn-lg btn-success' %>
+          </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

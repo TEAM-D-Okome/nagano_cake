@@ -1,0 +1,62 @@
+<div class="container my-5" >
+  <div class="row">
+    <div class="col-4 mb-3 offset-1">
+      <%= flash[:notice] %>
+      <h3><strong class="border-bottom border-dark"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</strong></h3>
+    </div>
+      <div class="container mb-5">
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <table class="table table-borderless contents-area">
+              <thead>
+                <tr>
+                  <th>会員ID</th>
+                  <td><%= @customer.id %></td>
+                </tr>
+                <tr>
+                  <th>氏名</th>
+                  <td><%= @customer.last_name %><%= @customer.first_name %></td>
+                </tr>
+                <tr>
+                  <th>フリガナ</th>
+                  <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+                </tr>
+                <tr>
+                  <th>郵便番号</th>
+                  <td><%= @customer.post_code %></td>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <td><%= @customer.address %></td>
+                </tr>
+                <tr>
+                  <th>電話番号</th>
+                  <td><%= @customer.phone_number %></td>
+                </tr>
+                <tr>
+                  <th>メールアドレス</th>
+                  <td><%= @customer.email %></td>
+                </tr>
+                <tr>
+                  <th>会員ステータス</th>
+                  <% if @customer.is_deleted == false %>
+                    <td><strong><p class="text-success">有効</p></strong></td>
+                  <% elsif %>
+                    <td><strong><p class="text-secondary">退会</p></strong></td>
+                  <% end %>
+                </tr>
+              </thead>
+            </table>
+          <div class="d-grid gap-2 d-md-block">
+            <%= link_to edit_admin_customer_path(@customer.id), class: 'text-light' do %>
+              <button class="btn btn-success" type="submit">編集する</button>
+            <% end %>
+            <%= link_to admin_orders_path, class: 'text-light' do %>
+              <button class="btn btn-primary" type="submit">注文履歴一覧を見る</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

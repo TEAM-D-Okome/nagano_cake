@@ -1,0 +1,57 @@
+<div class="container">
+  <% if @cart_items.count == 0 %>
+    <div class="text-center mt-5">
+      <h3>ショッピングカートに商品がありません。</h3>
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary mt-5 mb-5" %>
+    </div>
+  <% else %>
+  <p><%= flash[:notice] %></p>
+  <div class="row mt-4">
+    <p class="h3 border-bottom border-dark mt-2 mb-2">ショッピングカート</p>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, class: "btn btn-danger d-flex align-items-center ml-auto", method: :delete, "data-confirm" => "カートを空にしてよろしいですか？" %>
+    <table class="table table-bordered contents-area mt-3">
+      <thead class="table-active">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag cart_item.item.image, size: "80x70" %>
+                  <strong class="ml-3"><%= cart_item.item.name %></strong></td>
+              <td class="align-middle"><%= cart_item.item.add_tax_tax_out_price.to_s(:delimited) %></td>
+              <td class="align-middle"><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], class: "form-control" %>
+                    <%= f.submit "変更", class: "btn btn-success" %>
+                  <% end %></td>
+              <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %>
+                  </td>
+              <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item), class: "btn btn-danger", method: :delete, "data-confirm" => "商品を削除してよろしいですか？" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary mt-2 ml-5" %>
+    <table class="table table-bordered contents-area col-3 ml-auto">
+      <tbody>
+        <tr>
+          <th class="table-active">合計金額</th>
+          <th><%= @total_price.to_s(:delimited) %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row mt-2 mb-5">
+      <div class="mx-auto">
+        <% if @cart_items.exists? %>
+          <%= link_to "情報入力に進む", new_order_path(billing_amount: @total_price), class: "btn btn-success btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

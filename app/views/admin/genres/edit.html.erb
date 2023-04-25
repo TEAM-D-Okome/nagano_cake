@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-4 md-2">
+    <div class="col-md-6 mx-auto">
+      <%= render 'error',obj: @genre %>
+      <%= flash[:notice] %>
+      <h3><strong class="border-bottom border-dark">ジャンル編集</strong></h3>
+    <%= form_with model: @genre,url:admin_genre_path,method: :patch do |f| %>
+      <table class="table table-borderless mt-3">
+        <tbody>
+          <tr>
+            <td class="align-middle">
+              <label for="genre_name">ジャンル名</label>
+            </td>
+            <td class="align-middle">
+              <%= f.text_field:name %>
+            </td>
+            <td>
+              <%= f.submit "変更を保存",class:"btn btn-success" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    </div>
+  </div>
+</div>
