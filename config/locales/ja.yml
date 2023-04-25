@@ -19,7 +19,7 @@ ja:
       making_status:
         not_make: "着手不可"
         wait_make: "製作待ち"
-        now_make: "制作中"
+        now_make: "製作中"
         complete_make: "製作完了"
 
   devise:
